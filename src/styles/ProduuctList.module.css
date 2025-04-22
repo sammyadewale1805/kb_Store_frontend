@@ -1,0 +1,390 @@
+/* src/styles/ProductList.module.css - Enhanced with cool effects */
+.list {
+  padding: 3rem 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background pattern effect */
+.list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25px 25px, #f5f5f5 2%, transparent 0%),
+                    radial-gradient(circle at 75px 75px, #f5f5f5 2%, transparent 0%);
+  background-size: 100px 100px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, 
+    rgba(0,0,0,0.01), 
+    rgba(0,0,0,0.1), 
+    rgba(0,0,0,0.01)
+  );
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(to right, #000, #444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #000, #666);
+  border-radius: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.filterButton, .sortButton {
+  background: white;
+  border: 1px solid #eaeaea;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.filterButton:hover, .sortButton:hover {
+  background: #f9f9f9;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Enhanced grid layout with feature items */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+/* Enhanced item container for each product card */
+.gridItem {
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+
+.gridItem:hover {
+  transform: translateY(-10px);
+  z-index: 2;
+}
+
+/* Featured product styling - larger size */
+.featuredItem {
+  height: 100%;
+  position: relative;
+}
+
+/* Cool shadow effect for product cards */
+.featuredItem::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 10%;
+  width: 80%;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 80%);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gridItem:hover .featuredItem::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Masonry-like layout for larger screens */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(450px, auto);
+  }
+  
+  /* Create featured item layout with specific positions */
+  .gridItem:nth-child(8n + 1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .gridItem:nth-child(8n + 6) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  
+  .gridItem:nth-child(8n + 8) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(400px, auto);
+  }
+  
+  .gridItem:nth-child(6n + 1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  
+  .gridItem:nth-child(6n + 4) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gridItem:nth-child(4n + 1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 575px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Enhanced categories filter */
+.categories {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0 2.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.categoryButton {
+  background: white;
+  border: 2px solid #eaeaea;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.categoryButton:hover::before {
+  transform: translateX(100%);
+}
+
+.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.active::before {
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+}
+
+.categoryButton:hover:not(.active) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+}
+
+/* Enhanced empty state */
+.empty {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(145deg, #f9f9f9, #f2f2f2);
+  border-radius: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.empty::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%);
+  animation: rotateGradient 12s linear infinite;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empty h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.empty p {
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  font-size: 1.1rem;
+}
+
+/* Staggered animation effect for initial load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating animation for product cards */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.gridItem:nth-child(odd):hover {
+  animation: floatAnimation 3s ease infinite;
+}
+
+.gridItem:nth-child(even):hover {
+  animation: floatAnimation 4s ease infinite;
+}
+
+/* Add cool pulse effect for "new" products */
+.newBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #00c853;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);
+}
+
+.newBadge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

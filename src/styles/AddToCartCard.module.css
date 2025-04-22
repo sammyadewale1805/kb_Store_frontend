@@ -1,0 +1,281 @@
+/* AddToCartModal.module.css */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 95vw;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    flex-direction: row;
+    height: 600px;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  height: 250px;
+}
+
+@media (min-width: 768px) {
+  .imageContainer {
+    width: 40%;
+    height: 100%;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.favoriteBtn:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: #666;
+}
+
+.favoriteActive {
+  fill: #ff3d3d;
+  color: #ff3d3d;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 2.5rem;
+    justify-content: space-between;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  color: #333;
+}
+
+.closeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.productDetails {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.country {
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.star {
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+
+.starFull {
+  color: #f7c32e;
+}
+
+.starHalf {
+  color: #f7c32e;
+  opacity: 0.6;
+}
+
+.starEmpty {
+  color: #ddd;
+}
+
+.reviewCount {
+  margin-left: 8px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 1.2rem;
+}
+
+.discount {
+  background-color: #ffecec;
+  color: #ff3d3d;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.actionSection {
+  margin-top: 2rem;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.quantityLabel {
+  margin-right: 1rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.quantityBtn {
+  background-color: #f5f5f5;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityBtn:hover {
+  background-color: #eaeaea;
+}
+
+.quantityIcon {
+  width: 16px;
+  height: 16px;
+  color: #555;
+}
+
+.quantityValue {
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 50px;
+  color: #333;
+}
+
+.totalPrice {
+  margin-left: auto;
+  text-align: right;
+}
+
+.totalLabel {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.totalValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.addBtn {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1.2rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addBtn:hover {
+  background-color: #222;
+}

@@ -1,0 +1,262 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 40%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: #555;
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.cartContainer {
+  position: relative;
+}
+
+.cartCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4d4d;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userContainer {
+  position: relative;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.avatar:hover {
+  background: #ddd;
+}
+
+.userDropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.userMenuItem {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.userMenuItem:hover {
+  background: #f8f8f8;
+}
+
+.userMenuDivider {
+  height: 1px;
+  background: #eee;
+  margin: 4px 0;
+}
+
+.signInBtn {
+  background: #111;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.signInBtn:hover {
+  background: #333;
+}
+
+/* Categories Bar Styling */
+.categoriesBar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  background: #f9f9f9;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.categoriesBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  border-radius: 4px;
+}
+
+.categoriesBtn:hover {
+  background: #f0f0f0;
+}
+
+.categoriesIcon {
+  font-size: 1.2rem;
+}
+
+.categoriesDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 4px;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.categoryItem {
+  position: relative;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryItem:hover {
+  background: #f8f8f8;
+}
+
+.categoryItem:hover .subcategoriesPanel {
+  display: block;
+}
+
+.subcategoriesPanel {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: white;
+  border-radius: 4px;
+  width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.subcategoryItem {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.subcategoryItem:hover {
+  background: #f8f8f8;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: 2rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #000;
+}
+
+.promoText {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: #ff4d4d;
+  font-weight: 500;
+}

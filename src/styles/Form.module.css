@@ -1,0 +1,141 @@
+.formContainer {
+    flex: 1;
+    padding: 3rem;
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #ffffff;
+  }
+  
+  .formCard {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .subheading {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .input {
+    width: 95%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    margin: 8px;
+    transition: border 0.2s ease;
+  }
+  
+  .input:focus {
+    border-color: #6366f1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  }
+  
+  .button {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .button:hover {
+    background: #4f46e5;
+  }
+  
+  .googleBtn {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    padding: 0.79rem;
+    border-radius: 10px;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .googleBtn:hover {
+    background: #f3f4f6;
+  }
+  
+  .divider {
+    text-align: center;
+    margin: 1rem 0;
+    position: relative;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    width: 30%;
+    height: 1px;
+    background: #e5e7eb;
+  }
+  
+  .divider::before {
+    left: 0;
+  }
+  
+  .divider::after {
+    right: 0;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+    padding-bottom: 16px;
+    padding-top: 14px;
+  }
+  
+  .forgot {
+    text-decoration: none;
+    color: #6366f1;
+  }
+  
+  .forgot:hover {
+    text-decoration: underline;
+  }
+  
+  .linkText {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+  
+  .link {
+    color: #6366f1;
+    margin-left: 0.25rem;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,31 @@
+.footer {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 4rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .links a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .links a:hover {
+    color: #fbbf24; /* Tailwind yellow-400 */
+  }
+  

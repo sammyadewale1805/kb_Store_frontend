@@ -1,36 +1,46 @@
 import { useEffect, useState } from 'react';
 import styles from '../../styles/HeroBanner.module.css';
 
-import casual1 from '../../../public/images/product1.jpg';
-import casual2 from '../../../public/images/product2.jpg';
-import corporate1 from '../../../public/images/coporate.jpg';
-import corporate2 from '../../../public/images/coporate4.jpg';
-
-const casualSlides = [
-  { image: casual1, price: '$82.61', original: '$153.92' },
-  { image: casual2, price: '$70.00', original: '$130.00' },
-];
-
-const corporateSlides = [
-  { image: corporate1, price: '$129.00', original: '$220.00' },
-  { image: corporate2, price: '$115.99', original: '$210.00' },
-
-];
+interface Slide {
+  image: string;
+  price: string;
+  original: string;
+}
 
 export default function Hero() {
+  const [casualSlides, setCasualSlides] = useState<Slide[]>([]);
+  const [corporateSlides, setCorporateSlides] = useState<Slide[]>([]);
   const [casualIndex, setCasualIndex] = useState(0);
   const [corporateIndex, setCorporateIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCasualIndex((prev) => (prev + 1) % casualSlides.length);
-      setCorporateIndex((prev) => (prev + 1) % corporateSlides.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    const fetchSlides = async () => {
+      try {
+        const res = await fetch('http://localhost:3000/api/hero-slides');
+        const data = await res.json();
+        setCasualSlides(data.casual || []);
+        setCorporateSlides(data.corporate || []);
+      } catch (error) {
+        console.error('Failed to load slides:', error);
+      }
+    };
+
+    fetchSlides();
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCasualIndex(prev => (casualSlides.length ? (prev + 1) % casualSlides.length : 0));
+      setCorporateIndex(prev => (corporateSlides.length ? (prev + 1) % corporateSlides.length : 0));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [casualSlides, corporateSlides]);
 
   const casual = casualSlides[casualIndex];
   const corporate = corporateSlides[corporateIndex];
+
+  if (!casual || !corporate) return null;
 
   return (
     <section className={styles.heroSection}>

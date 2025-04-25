@@ -76,13 +76,15 @@ export const TiltEffect: React.FC<TiltEffectProps> = ({
         transformStyle: 'preserve-3d',
         width: '100%',
         height: '100%',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        // Set initial perspective value to make it animatable
+        perspective: perspective
       }}
       animate={{
         rotateX: tiltX,
         rotateY: tiltY,
-        scale: scale,
-        perspective: perspective
+        scale: scale
+        // Removed perspective from animate as it's now set in style
       }}
       transition={{
         type: 'spring',

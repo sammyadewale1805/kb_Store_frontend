@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactDOM from 'react-dom';
 import styles from '../../styles/AddToCartCard.module.css';
+import { useCart } from './CartContext';
 
 interface AddToCartProps {
-  id?: string;
+  id: string;
   name: string;
   image: string;
   price: string;
@@ -18,6 +19,9 @@ export default function AddToCartModal(props: AddToCartProps) {
   const [size, setSize] = useState('M');
   const [color, setColor] = useState('default');
   const [modalRoot, setModalRoot] = useState<Element | null>(null);
+  
+  // Use our cart context
+  const { addToCart } = useCart();
   
   // Color palette for a more modern look
   const colors = [
@@ -60,6 +64,20 @@ export default function AddToCartModal(props: AddToCartProps) {
     return (basePrice * quantity).toFixed(2);
   };
 
+  // Handle adding item to cart
+  const handleAddToCart = () => {
+    addToCart({
+      id: props.id,
+      name: props.name,
+      image: props.image,
+      price: props.price,
+      quantity: quantity,
+      size: size,
+      color: color
+    });
+    props.onClose();
+  };
+
   // Modal content with improved styling for full-page overlay
   const modalContent = (
     <AnimatePresence>
@@ -78,6 +96,7 @@ export default function AddToCartModal(props: AddToCartProps) {
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking modal content
         >
+          {/* Modal content structure remains the same */}
           <div className={styles.modalHeader}>
             <motion.h2
               initial={{ x: -20, opacity: 0 }}
@@ -101,6 +120,7 @@ export default function AddToCartModal(props: AddToCartProps) {
           
           <div className={styles.modalContent}>
             <div className={styles.productPreview}>
+              {/* Product image and info */}
               <motion.div
                 className={styles.imageContainer}
                 initial={{ y: 20, opacity: 0 }}
@@ -160,6 +180,7 @@ export default function AddToCartModal(props: AddToCartProps) {
             </div>
             
             <div className={styles.optionsContainer}>
+              {/* Size selector */}
               <motion.div 
                 className={styles.optionSection}
                 initial={{ y: 15, opacity: 0 }}
@@ -182,6 +203,7 @@ export default function AddToCartModal(props: AddToCartProps) {
                 </div>
               </motion.div>
               
+              {/* Color selector */}
               <motion.div 
                 className={styles.optionSection}
                 initial={{ y: 15, opacity: 0 }}
@@ -213,6 +235,7 @@ export default function AddToCartModal(props: AddToCartProps) {
                 </div>
               </motion.div>
               
+              {/* Quantity selector */}
               <motion.div 
                 className={styles.optionSection}
                 initial={{ y: 15, opacity: 0 }}
@@ -257,6 +280,7 @@ export default function AddToCartModal(props: AddToCartProps) {
             </div>
           </div>
           
+          {/* Order summary */}
           <motion.div 
             className={styles.orderSummary}
             initial={{ opacity: 0, y: 20 }}
@@ -278,6 +302,7 @@ export default function AddToCartModal(props: AddToCartProps) {
             </div>
           </motion.div>
           
+          {/* Footer with action buttons */}
           <div className={styles.modalFooter}>
             <motion.button
               className={styles.continueShoppingButton}
@@ -290,6 +315,7 @@ export default function AddToCartModal(props: AddToCartProps) {
             
             <motion.button
               className={styles.addToCartButton}
+              onClick={handleAddToCart} // Updated to use our handler
               whileHover={{ scale: 1.05, backgroundColor: "#0066cc" }}
               whileTap={{ scale: 0.97 }}
               initial={{ opacity: 0, y: 10 }}

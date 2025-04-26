@@ -4,9 +4,11 @@ import SignUp from './pages/SignUp';
 import Success from './pages/Success';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/HomePage';
+import { CartProvider } from './components/AddToCart/CartContext';
 
 export default function App() {
   return (
+    <CartProvider>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/signin" element={<SignIn />} />
@@ -14,5 +16,6 @@ export default function App() {
       <Route path="/success" element={<Success message="You're all set!" onClose={() => { } } type={'success'} />} />
       <Route path="/error" element={<ErrorPage message="An error occurred." />} />
     </Routes>
+    </CartProvider>
   );
 }

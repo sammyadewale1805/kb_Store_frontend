@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 import { useCart } from '../AddToCart/CartContext';
 import { CartItem } from '../AddToCart/CartTypes';
 import '../../styles/CartList.css';
+import { useNavigate } from 'react-router-dom';
+
 
 interface CartProps {
   isOpen: boolean;
@@ -86,6 +88,10 @@ interface CartSummaryProps {
 }
 
 const CartSummary: React.FC<CartSummaryProps> = ({ subtotal, hasItems }) => {
+  const navigate = useNavigate();
+  const handleCheckOutClick = () => {
+    navigate('/CheckOut'); // or whatever your sign-in route is
+  };
   const shipping = hasItems ? 5 : 0;
   const tax = subtotal * 0.07;
   const total = subtotal + shipping + tax;
@@ -109,7 +115,8 @@ const CartSummary: React.FC<CartSummaryProps> = ({ subtotal, hasItems }) => {
         <span>${total.toFixed(2)}</span>
       </div>
       
-      <button 
+      <button
+       onClick={handleCheckOutClick}
         className="checkout-button" 
         disabled={!hasItems}
       >

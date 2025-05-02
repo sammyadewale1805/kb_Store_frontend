@@ -2,8 +2,13 @@ import { useState } from 'react';
 import { useCart } from '../AddToCart/CartContext'; // Adjust the import path as necessary
 import Cart from '../AddToCart/CartList'; // Import the Cart component
 import styles from '../../styles/Navbar.module.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const handleSignInClick = () => {
+    navigate('/signin'); // or whatever your sign-in route is
+  };
   const [showCategories, setShowCategories] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -67,7 +72,9 @@ export default function Navbar() {
               )}
             </div>
             
-            <button className={styles.signInBtn}>Sign In</button>
+            <button className={styles.signInBtn} onClick={handleSignInClick}>
+      Sign In
+    </button>
           </div>
         </div>
         

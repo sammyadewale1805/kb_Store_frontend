@@ -172,7 +172,7 @@ export default function ProductCard(props: ProductProps) {
       
       {/* Render modal outside the card's context */}
       {showAddToCart && (
-        <AddToCartModal {...props} onClose={handleCloseModal} />
+        <AddToCartModal {...props} id={props.id || ''} onClose={handleCloseModal} />
       )}
     </>
   );

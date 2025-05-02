@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react';
 import styles from '../../styles/HeroBanner.module.css';
 
+// Simple props interface with just the click handler
+interface HeroProps {
+  onViewMoreClick: () => void;
+}
+
 interface Slide {
   image: string;
   price: string;
   original: string;
 }
 
-export default function Hero() {
+export default function Hero({ onViewMoreClick }: HeroProps) {
   const [casualSlides, setCasualSlides] = useState<Slide[]>([]);
   const [corporateSlides, setCorporateSlides] = useState<Slide[]>([]);
   const [casualIndex, setCasualIndex] = useState(0);
   const [corporateIndex, setCorporateIndex] = useState(0);
-
+  
   useEffect(() => {
     const fetchSlides = async () => {
       try {
@@ -24,24 +29,24 @@ export default function Hero() {
         console.error('Failed to load slides:', error);
       }
     };
-
+    
     fetchSlides();
   }, []);
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCasualIndex(prev => (casualSlides.length ? (prev + 1) % casualSlides.length : 0));
       setCorporateIndex(prev => (corporateSlides.length ? (prev + 1) % corporateSlides.length : 0));
     }, 5000);
-
+    
     return () => clearInterval(interval);
   }, [casualSlides, corporateSlides]);
-
+  
   const casual = casualSlides[casualIndex];
   const corporate = corporateSlides[corporateIndex];
-
+  
   if (!casual || !corporate) return null;
-
+  
   return (
     <section className={styles.heroSection}>
       <div
@@ -55,10 +60,12 @@ export default function Hero() {
             <strong>{casual.price}</strong>
             <span>{casual.original}</span>
           </div>
-          <button className={styles.viewMore}>View More</button>
+          <button className={styles.viewMore} onClick={onViewMoreClick}>
+            View More
+          </button>
         </div>
       </div>
-
+      
       <div
         className={styles.heroCard}
         style={{ backgroundImage: `url(${corporate.image})` }}
@@ -70,7 +77,9 @@ export default function Hero() {
             <strong>{corporate.price}</strong>
             <span>{corporate.original}</span>
           </div>
-          <button className={styles.viewMore}>View More</button>
+          <button className={styles.viewMore} onClick={onViewMoreClick}>
+            View More
+          </button>
         </div>
       </div>
     </section>

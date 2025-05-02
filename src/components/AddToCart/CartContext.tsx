@@ -58,7 +58,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       removeFromCart, 
       updateQuantity, 
       getCartTotal,
-      getCartCount
+      getCartCount,
     }}>
       {children}
     </CartContext.Provider>

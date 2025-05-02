@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from '../../styles/Alert.module.css';
 import { motion } from 'framer-motion';
-import { FiAlertTriangle } from 'react-icons/fi';
+import { FiCheckCircle } from 'react-icons/fi';
 
-interface ErrorCardProps {
+interface SuccessCardProps {
   message: string;
   onClose?: () => void;
 }
 
-export const ErrorCard: React.FC<ErrorCardProps> = ({ message, onClose }) => {
+export const SuccessCard: React.FC<SuccessCardProps> = ({ message, onClose }) => {
   return (
     <motion.div 
       className={styles.cardContainer}
@@ -17,10 +17,10 @@ export const ErrorCard: React.FC<ErrorCardProps> = ({ message, onClose }) => {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
     >
-      <div className={`${styles.card} ${styles.errorCard}`}>
+      <div className={`${styles.card} ${styles.successCard}`}>
         <div className={styles.cardHeader}>
-          <FiAlertTriangle className={styles.errorIcon} />
-          <h3 className={styles.cardTitle}>Error</h3>
+          <FiCheckCircle className={styles.successIcon} />
+          <h3 className={styles.cardTitle}>Success</h3>
           {onClose && (
             <button 
               className={styles.closeButton}
